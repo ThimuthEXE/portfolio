@@ -1,0 +1,110 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #e0e0e0;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 60px;
+    background-color: #5f6c7b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Distribute icons from top to bottom */
+    height: 100vh; /* Make sidebar full height */
+    padding: 20px 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Makes the list take up available space */
+    justify-content: space-between; /* Distributes icons evenly */
+}
+
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; /* Makes each item take equal vertical space */
+}
+
+.sidebar ul li a img {
+    width: 24px;
+    height: 24px;
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+.sidebar ul li a img:hover {
+    transform: scale(1.3); /* Slightly enlarge the icon */
+}
+
+
+/* Content */
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    flex: 1;
+}
+
+/* Text Box */
+.text-box {
+    background: rgba(173, 192, 218, 0.6);
+    padding: 20px;
+    margin-left: 100px;
+    border-radius: 5px;
+    width: 40%;
+    height: 40%;
+}
+
+.text-box h1 {
+    margin: 0;
+    color: #4d4d4d;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.text-box p {
+    color: #ffffff;
+}
+
+/* Button Styling */
+.custom-button {
+    background-color: #5f6c7b; /* Button color */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Default shadow */
+}
+
+/* Button Hover Effect */
+.custom-button:hover {
+    background-color: #4a5563; /* Darker shade */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    transform: scale(1.05); /* Slight pop effect */
+}
+
+/* Image */
+.image img {
+    width: 500px;
+    height: auto;
+    filter: grayscale(100%);
+    margin-right: 100px;
+}
