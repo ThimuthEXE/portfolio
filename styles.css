@@ -4,49 +4,55 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    height: 100vh;
-    background-color: #e0e0e0;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #e7e7e7, #E8F9FF, #C4D9FF,#C5BAFF);
+    background-size: 100% 400%; /* Extend the gradient to cover scrolling */
+    transition: background-position 0.5s ease;
 }
 
-/* Sidebar */
-.sidebar {
+/* Vertical Navbar */
+.navbar {
     width: 60px;
-    background-color: #5f6c7b;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Distribute icons from top to bottom */
-    height: 100vh; /* Make sidebar full height */
-    padding: 20px 0;
+    padding: 10px 0;
+    background: linear-gradient(180deg, #20202095, #c0c0be, #d7d7d5,#ececea);
+    background-size: 100% 400%; /* Extend the gradient to cover scrolling */
+    border-radius: 0px 10px 10px 0px;
 }
 
-.sidebar ul {
+.navbar ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Makes the list take up available space */
-    justify-content: space-between; /* Distributes icons evenly */
+    justify-content: center;
 }
 
-.sidebar ul li {
+.navbar ul li {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-grow: 1; /* Makes each item take equal vertical space */
+    margin: 10px 0;
 }
 
-.sidebar ul li a img {
+.navbar ul li a img {
     width: 24px;
     height: 24px;
-    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+    transition: transform 0.3s ease-in-out;
 }
 
-.sidebar ul li a img:hover {
-    transform: scale(1.3); /* Slightly enlarge the icon */
+.navbar ul li a img:hover {
+    transform: scale(1.3);
 }
-
 
 /* Content */
 .content {
@@ -55,12 +61,13 @@ body {
     justify-content: space-between;
     padding: 50px;
     flex: 1;
+    margin-left: 80px; /* Adjusted for vertical navbar */
 }
 
 /* Text Box */
 .text-box {
-    background: rgba(173, 192, 218, 0.6);
-    border: 5px solid #adc0dae1; /* Adds a solid border */
+    background: #20202095;
+    border: 5px solid rgba(32, 32, 32, 0.319);
     padding: 20px;
     margin-left: 100px;
     border-radius: 10px;
@@ -84,7 +91,7 @@ body {
 
 /* Button Styling */
 .custom-button {
-    background-color: #5f6c7b; /* Button color */
+    background-color: #5f6c7b;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -92,14 +99,14 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Default shadow */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Button Hover Effect */
 .custom-button:hover {
-    background-color: #4a5563; /* Darker shade */
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-    transform: scale(1.05); /* Slight pop effect */
+    background-color: #4a5563;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
 }
 
 /* Image */
@@ -108,4 +115,17 @@ body {
     height: auto;
     filter: grayscale(100%);
     margin-right: 100px;
+}
+
+/* Sections */
+.section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-size: 24px;
 }
