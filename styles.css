@@ -54,67 +54,110 @@ body {
     transform: scale(1.3);
 }
 
-/* Content */
-.content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 50px;
-    flex: 1;
-    margin-left: 80px; /* Adjusted for vertical navbar */
-}
-
-/* Text Box */
-.text-box {
-    background: #20202095;
-    border: 5px solid rgba(32, 32, 32, 0.319);
-    padding: 20px;
-    margin-left: 100px;
-    border-radius: 10px;
-    width: 40%;
-    height: 40%;
-}
-
-.text-box h1 {
-    margin: 0;
-    color: #4d4d4d;
-}
-
-.highlight {
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.text-box p {
-    color: #ffffff;
-}
-
-/* Button Styling */
-.custom-button {
-    background-color: #5f6c7b;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    left: 60px; /* Position to the right of the navbar */
+    top: 0;
+    background-color: rgba(95, 108, 123, 0.9);
+    border-radius: 0 10px 10px 0;
+    padding: 10px;
+    min-width: 150px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Button Hover Effect */
-.custom-button:hover {
-    background-color: #4a5563;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
+.dropdown-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+    z-index: 1001; /* Higher than navbar */
 }
 
-/* Image */
-.image img {
-    width: 500px;
+.dropdown-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Show dropdown when hovering over the menu icon OR the dropdown itself */
+.navbar ul li:hover .dropdown-menu,
+.dropdown-menu:hover {
+    display: block;
+}
+
+/* Content */
+.content {
+    display: flex;
+    justify-content: space-between; /* Space out the name and face */
+    align-items: center; /* Center vertically */
+    padding: 40px;
+    flex: 1;
+    margin-left: 80px; /* Adjusted for vertical navbar */
+    margin-bottom: 50px; /* Add space below the content */
+}
+
+.name-container{
+    margin-top: 5%;
+    align-items: center;
+}
+
+/* Name Image */
+.image-name img {
+    width: 150%; /* Adjust size as needed */
     height: auto;
     filter: grayscale(100%);
-    margin-right: 100px;
+    margin-right: 20px; /* Add space between name and face */
+    margin-left: auto;
+    padding-bottom: 7.5%;
+}
+
+/* Button Header Container */
+.button-header {
+    position: relative; /* Create a positioning context */
+    width: 50%;
+    margin-left: 50%;
+    border: none;
+    margin-top: 10%;
+    background-color: transparent; /* Remove background color */
+    box-shadow: none; /* Remove shadow */
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+}
+
+.stars {
+    width: 80%;
+    height: auto;
+    margin-top: 2%;
+    opacity: 0%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.custom-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button-header:hover .custom-button {
+    transform: translate(-50%, -50%) scale(1.1); /* Slightly enlarge on hover */
+}
+
+.button-header:hover .stars {
+    opacity: 100%;
+}
+
+/* Face Image */
+.image img {
+    width: 70%; /* Adjust size as needed */
+    height: auto;
+    filter: grayscale(100%);
+    margin-left: 25%;
 }
 
 /* Sections */
@@ -128,4 +171,5 @@ body {
     padding: 20px;
     color: white;
     font-size: 24px;
+    margin-top: 50px; /* Add space above the first section */
 }

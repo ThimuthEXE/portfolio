@@ -10,7 +10,16 @@
 <body>
     <div class="navbar">
         <ul>
-            <li><a href="#"><img src="icons/menu.png" alt="Menu"></a></li>
+            <li>
+                <a href="#"><img src="icons/menu.png" alt="Menu" class="menu-icon"></a>
+                <!-- Dropdown Menu -->
+                <div class="dropdown-menu">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Contact</a>
+                </div>
+            </li>
             <li><a href="#"><img src="icons/linkedin.png" alt="LinkedIn"></a></li>
             <li><a href="#"><img src="icons/whatsapp.png" alt="WhatsApp"></a></li>
             <li><a href="#"><img src="icons/instagram.png" alt="Instagram"></a></li>
@@ -19,11 +28,18 @@
         </ul>
     </div>
 
+
     <div class="content">
-        <div class="text-box">
-            <h1><span class="highlight">I'M THIMUTH</span></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
-            <button class="custom-button">Click Me</button>
+        <div class="name-container">
+            <div class="image-name">
+                <img src="images/name.png" alt="Thimuth's Name">
+            </div>
+            <a href="#">
+                <button class="button-header">
+                    <img class="custom-button" src="icons/button.png" alt="want to know">
+                    <img class="stars" src="icons/stars.png">
+                </button>
+            </a>
         </div>
         <div class="image">
             <img src="images/face.png" alt="Thimuth's Face">
