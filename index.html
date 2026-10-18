@@ -9,21 +9,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Immediate Zero-Flash Theme Initialization -->
+    <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('thimuth_portfolio_theme');
+                if (savedTheme === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
-<body>
+<body data-theme-init="ready">
 
     <!-- Navigation Bar -->
     <nav class="nav" id="navbar">
         <div class="nav-container">
-            <!-- Animated Telecri Logo -->
+            <!-- Animated Telecri Kinetic Orbit Logo -->
             <a href="#hero" class="logo" aria-label="Thimuth Home">
                 <div class="logo-wrapper">
-                    <img src="assests/c2.png" alt="Logo base" class="logo-base">
+                    <!-- Base: dark (c2.png) or bright (c2.w.png) -->
+                    <img src="assests/c2.png" alt="Logo base" class="logo-base dark-logo">
+                    <img src="assests/c2.w.png" alt="Logo base" class="logo-base light-logo">
                     <div class="la1">
-                        <img src="assests/c3.png" alt="Logo ring">
+                        <img src="assests/c3.png" alt="Logo ring" class="dark-logo">
+                        <img src="assests/c3.w.png" alt="Logo ring" class="light-logo">
                     </div>
                     <div class="la2">
-                        <img src="assests/c43.png" alt="Logo satellite">
+                        <img src="assests/c43.png" alt="Logo satellite" class="dark-logo">
+                        <img src="assests/c43.w.png" alt="Logo satellite" class="light-logo">
                     </div>
                 </div>
                 <span class="logo-text">THIMUTH</span>
@@ -56,12 +75,35 @@
                 </div>
             </div>
 
-            <!-- Hamburger Icon (Telecri Animated 3-bar to X) -->
-            <button class="navTrigger" id="navTrigger" aria-label="Toggle navigation menu" aria-expanded="false">
-                <i></i>
-                <i></i>
-                <i></i>
-            </button>
+            <!-- Right Controls: Theme Toggle & Hamburger -->
+            <div class="nav-right-actions">
+                <!-- Dual Theme Switcher Button with Sun/Moon Icons -->
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme between Dark and Light" title="Toggle Theme">
+                    <!-- Sun Icon (shown in dark mode to prompt switching to light) -->
+                    <svg class="theme-icon theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon Icon (shown in light mode to prompt switching to dark) -->
+                    <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <!-- Hamburger Icon (Telecri Animated 3-bar to X) -->
+                <button class="navTrigger" id="navTrigger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -69,10 +111,13 @@
     <main>
         <!-- Hero Section -->
         <section class="hero" id="hero">
-            <!-- Looping Background Video for Hero Section -->
+            <!-- Looping Background Video for Hero Section (Dark: bg.mp4, Bright: bg.w.mp4) -->
             <div class="hero-video-container">
-                <video id="background-video" autoplay loop muted playsinline poster="assests/video_poster.jpg">
+                <video id="background-video" class="hero-video dark-video" autoplay loop muted playsinline poster="assests/video_poster.jpg">
                     <source src="assests/bg.mp4" type="video/mp4">
+                </video>
+                <video id="background-video-light" class="hero-video light-video" autoplay loop muted playsinline poster="assests/video_poster.jpg">
+                    <source src="assests/bg.w.mp4" type="video/mp4">
                 </video>
                 <div class="hero-video-overlay"></div>
             </div>
@@ -105,9 +150,11 @@
 
                 <!-- Hero Image Card with Interactive 3D Mesh -->
                 <div class="hero-image-wrapper">
-                    <div class="image-card" id="meshCard" data-image="assests/l2.PNG">
+                    <div class="image-card" id="meshCard" data-image-dark="assests/l2.PNG" data-image-light="assests/l2.w.png">
                         <div class="image-glow"></div>
-                        <img src="assests/l2.PNG" alt="Thimuth Wettasinghe" class="hero-img">
+                        <!-- Dark version l2.PNG and Light version l2.w.png -->
+                        <img src="assests/l2.PNG" alt="Thimuth Wettasinghe" class="hero-img dark-hero-img">
+                        <img src="assests/l2.w.png" alt="Thimuth Wettasinghe" class="hero-img light-hero-img">
                     </div>
                 </div>
             </div>

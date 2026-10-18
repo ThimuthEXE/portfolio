@@ -10,15 +10,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll("section[id]");
 
-    // --- 0. Autoplay Hero Video Guarantee ---
-    const bgVideo = document.getElementById("background-video");
-    if (bgVideo) {
-        bgVideo.muted = true;
-        const playPromise = bgVideo.play();
+    // --- 0. Autoplay Hero Video Guarantee (Dual Theme Videos) ---
+    const bgVideos = [
+        document.getElementById("background-video"),
+        document.getElementById("background-video-light")
+    ].filter(Boolean);
+
+    bgVideos.forEach((v) => {
+        v.muted = true;
+        const playPromise = v.play();
         if (playPromise !== undefined) {
             playPromise.catch(() => {
                 const onFirstInteraction = () => {
-                    bgVideo.play();
+                    v.play().catch(() => {});
                     window.removeEventListener("click", onFirstInteraction);
                     window.removeEventListener("scroll", onFirstInteraction);
                 };
@@ -26,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.addEventListener("scroll", onFirstInteraction, { once: true });
             });
         }
-    }
+    });
 
     // --- 1. Sticky Navbar Transition on Scroll (.affix) ---
     const handleScroll = () => {
@@ -90,16 +94,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- 5. Optimized 8x8 Interactive 3D Mesh Grid on Hero Card ---
     const meshCard = document.getElementById("meshCard");
+    let meshTiles = [];
+
+    const getActiveMeshImage = () => {
+        const isLight = document.documentElement.getAttribute("data-theme") === "light";
+        if (meshCard) {
+            return isLight
+                ? (meshCard.getAttribute("data-image-light") || "assests/l2.w.png")
+                : (meshCard.getAttribute("data-image-dark") || "assests/l2.PNG");
+        }
+        return isLight ? "assests/l2.w.png" : "assests/l2.PNG";
+    };
+
     if (meshCard) {
         const GRID_SIZE = 8; // 64 lightweight tiles for zero delay & instant rendering
         const RADIUS = 2.8;
         const Z_MAX = 50; // Maximum elevation in pixels
-        const imageSrc = meshCard.getAttribute("data-image") || "assests/l2.PNG";
+        const initialImageSrc = getActiveMeshImage();
 
         const meshGrid = document.createElement("div");
         meshGrid.className = "mesh-grid";
 
-        const tiles = [];
         const fragment = document.createDocumentFragment();
 
         for (let r = 0; r < GRID_SIZE; r++) {
@@ -108,11 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 tile.className = "mesh-tile";
                 tile.dataset.r = r;
                 tile.dataset.c = c;
-                tile.style.backgroundImage = `url('${imageSrc}')`;
+                tile.style.backgroundImage = `url('${initialImageSrc}')`;
                 tile.style.backgroundPosition = `${(c / (GRID_SIZE - 1) * 100).toFixed(4)}% ${(r / (GRID_SIZE - 1) * 100).toFixed(4)}%`;
 
                 fragment.appendChild(tile);
-                tiles.push({
+                meshTiles.push({
                     element: tile,
                     r,
                     c,
@@ -138,8 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const mouseCol = nx * GRID_SIZE - 0.5;
             const mouseRow = ny * GRID_SIZE - 0.5;
+            const isLight = document.documentElement.getAttribute("data-theme") === "light";
 
-            tiles.forEach((tile) => {
+            meshTiles.forEach((tile) => {
                 const dr = tile.r - mouseRow;
                 const dc = tile.c - mouseCol;
                 const dist = Math.sqrt(dc * dc + dr * dr);
@@ -153,8 +169,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     const rotY = -dc * 3.5 * t;
                     const shadowBlur = z * 0.5;
 
+                    const shadowColor = isLight ? "rgba(20, 50, 60, 0.16)" : "rgba(0, 0, 0, 0.7)";
+                    const glowColor = isLight ? "rgba(60, 174, 163, 0.35)" : "rgba(60, 174, 163, 0.45)";
+
                     tile.element.style.transform = `translateZ(${z.toFixed(1)}px) rotateX(${rotX.toFixed(1)}deg) rotateY(${rotY.toFixed(1)}deg)`;
-                    tile.element.style.boxShadow = `0 ${(z * 0.3).toFixed(1)}px ${shadowBlur.toFixed(1)}px rgba(0, 0, 0, 0.7), 0 0 ${(z * 0.35).toFixed(1)}px rgba(60, 174, 163, 0.45)`;
+                    tile.element.style.boxShadow = `0 ${(z * 0.3).toFixed(1)}px ${shadowBlur.toFixed(1)}px ${shadowColor}, 0 0 ${(z * 0.35).toFixed(1)}px ${glowColor}`;
                     tile.element.style.zIndex = Math.round(z * 10);
                     tile.active = true;
                 } else if (tile.active) {
@@ -185,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 rafId = null;
             }
 
-            tiles.forEach((tile) => {
+            meshTiles.forEach((tile) => {
                 if (tile.active) {
                     tile.element.style.transform = "translateZ(0px) rotateX(0deg) rotateY(0deg)";
                     tile.element.style.boxShadow = "none";
@@ -199,5 +218,54 @@ document.addEventListener("DOMContentLoaded", () => {
         meshCard.addEventListener("pointerleave", onPointerLeave);
     }
 
-    console.log("Thimuth Portfolio initialized successfully.");
+    // --- 6. Unified Theme Toggle Logic (Dark <-> Bright) ---
+    const themeToggleBtn = document.getElementById("themeToggle");
+    const themeToggleText = themeToggleBtn ? themeToggleBtn.querySelector(".theme-toggle-text") : null;
+
+    const updateThemeUI = (theme) => {
+        document.documentElement.setAttribute("data-theme", theme);
+        try {
+            localStorage.setItem("thimuth_portfolio_theme", theme);
+        } catch (e) {}
+
+        if (themeToggleText) {
+            themeToggleText.textContent = theme === "dark" ? "LIGHT" : "DARK";
+        }
+        if (themeToggleBtn) {
+            themeToggleBtn.setAttribute(
+                "title",
+                theme === "dark" ? "Switch to Bright Mode" : "Switch to Dark Mode"
+            );
+        }
+
+        // Update 3D mesh background image if tiles exist
+        if (meshTiles.length > 0) {
+            const currentMeshSrc = getActiveMeshImage();
+            meshTiles.forEach((tile) => {
+                tile.element.style.backgroundImage = `url('${currentMeshSrc}')`;
+            });
+        }
+
+        // Video playback reliability for active theme
+        const activeVideo = theme === "light"
+            ? document.getElementById("background-video-light")
+            : document.getElementById("background-video");
+        if (activeVideo && activeVideo.paused) {
+            activeVideo.play().catch(() => {});
+        }
+    };
+
+    // Initialize theme button label from existing attribute
+    const initialTheme = document.documentElement.getAttribute("data-theme") || "dark";
+    updateThemeUI(initialTheme);
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", () => {
+            const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            updateThemeUI(newTheme);
+        });
+    }
+
+    console.log("Thimuth Portfolio initialized successfully with unified dual-theme system.");
 });
