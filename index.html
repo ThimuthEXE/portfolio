@@ -3,46 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thimuth's Profile</title>
+    <title>Thimuth Wettasinghe | Data Science, AI & Creative Design</title>
+    <!-- Google Fonts: Bebas Neue for display headings + Plus Jakarta Sans for crisp body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="navbar">
-        <ul>
-            <li>
-                <a href="#"><img src="icons/menu.png" alt="Menu" class="menu-icon"></a>
-                <!-- Dropdown Menu -->
-                <div class="dropdown-menu">
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Services</a>
-                    <a href="#">Contact</a>
-                </div>
-            </li>
-            <li><a href="#"><img src="icons/linkedin.png" alt="LinkedIn"></a></li>
-            <li><a href="#"><img src="icons/whatsapp.png" alt="WhatsApp"></a></li>
-            <li><a href="#"><img src="icons/instagram.png" alt="Instagram"></a></li>
-            <li><a href="#"><img src="icons/facebook.png" alt="Facebook"></a></li>
-            <li><a href="#"><img src="icons/github.png" alt="GitHub"></a></li>
-        </ul>
-    </div>
 
-    <div class="content">
-        <div class="name-container">
-            <div class="image-name">
-                <img src="images/name.png" alt="Thimuth's Name">
+    <!-- Navigation Bar -->
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <!-- Animated Telecri Logo -->
+            <a href="#hero" class="logo" aria-label="Thimuth Home">
+                <div class="logo-wrapper">
+                    <img src="assests/c2.png" alt="Logo base" class="logo-base">
+                    <div class="la1">
+                        <img src="assests/c3.png" alt="Logo ring">
+                    </div>
+                    <div class="la2">
+                        <img src="assests/c43.png" alt="Logo satellite">
+                    </div>
+                </div>
+                <span class="logo-text">THIMUTH</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#portfolio" class="nav-link">Projects</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+
+                <!-- Social Media Bar (Integrated Links) -->
+                <div class="nav-socials">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">
+                        <img src="icons/github.png" alt="GitHub">
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                        <img src="icons/linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://behance.net" target="_blank" rel="noopener noreferrer" title="Behance">
+                        <img src="icons/behance.png" alt="Behance">
+                    </a>
+                    <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                        <img src="icons/whatsapp.png" alt="WhatsApp">
+                    </a>
+                </div>
             </div>
-            <a href="#">
-                <button class="button-header">
-                    <img class="custom-button" src="icons/button.png" alt="want to know">
-                    <img class="stars" src="icons/stars.png">
-                </button>
+
+            <!-- Hamburger Icon (Telecri Animated 3-bar to X) -->
+            <button class="navTrigger" id="navTrigger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i></i>
+                <i></i>
+                <i></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <!-- Looping Background Video for Hero Section -->
+            <div class="hero-video-container">
+                <video id="background-video" autoplay loop muted playsinline poster="assests/video_poster.jpg">
+                    <source src="assests/bg.mp4" type="video/mp4">
+                </video>
+                <div class="hero-video-overlay"></div>
+            </div>
+
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-role-tag">
+                        ASPIRING DATA SCIENTIST &bull; AI ENTHUSIAST &bull; CREATIVE DESIGNER
+                    </div>
+
+                    <h1 class="hero-title">
+                        I AM <span class="thi">THIMUTH WETTASINGHE</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Data Science and Business Analytics undergraduate at General Sir John Kotelawala Defence University, passionate about exploring the intersection of artificial intelligence, data, technology, and design. Turning ideas into practical, intelligent systems and engaging digital experiences.
+                    </p>
+
+                    <!-- Interactive CTAs -->
+                    <div class="hero-actions">
+                        <a href="#portfolio" class="btn btn-primary">
+                            Explore Projects
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image Card with Interactive 3D Mesh -->
+                <div class="hero-image-wrapper">
+                    <div class="image-card" id="meshCard" data-image="assests/l2.PNG">
+                        <div class="image-glow"></div>
+                        <img src="assests/l2.PNG" alt="Thimuth Wettasinghe" class="hero-img">
+                    </div>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-down-hint" aria-label="Scroll to About section">
+                <span>SCROLL</span>
+                <div class="scroll-indicator"></div>
+            </a>
+        </section>
+
+        <!-- About Section (Bento Grid) -->
+        <section class="section about-section" id="about">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">// 01 &bull; BACKGROUND &amp; SKILLS</span>
+                    <h2 class="section-title">ABOUT ME</h2>
+                    <p class="section-subtitle">Bridging data-driven decision-making, machine learning, and human-centered design.</p>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Bio & Education Card -->
+                    <div class="bento-card bento-wide">
+                        <div class="card-glow"></div>
+                        <h3 class="card-title">Data Science &amp; Business Analytics Undergrad</h3>
+                        <p class="card-text">
+                            I'm an undergraduate in Data Science and Business Analytics at <strong>General Sir John Kotelawala Defence University</strong>, Sri Lanka (Faculty of Computing, Intake 42), and an alumnus of <strong>Ananda College, Colombo 10</strong>. My interests span artificial intelligence, machine learning, data-driven decision-making, and digital design.
+                        </p>
+                        <p class="card-text">
+                            I enjoy exploring how intelligent systems can address real-world challenges, particularly in business analytics and emerging technologies. I believe in continuous learning, creative problem-solving, and using technology to make a practical difference.
+                        </p>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <span class="stat-number">KDU</span>
+                                <span class="stat-label">Faculty of Computing</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">AI &amp; DS</span>
+                                <span class="stat-label">Primary Focus</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">DESIGN</span>
+                                <span class="stat-label">Visual &amp; Branding</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Core Skills Card -->
+                    <div class="bento-card">
+                        <div class="card-glow"></div>
+                        <h3 class="card-title">Technical Skills</h3>
+                        <div class="skill-category-label">Data &amp; AI</div>
+                        <div class="skill-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">YOLOv8</span>
+                            <span class="tag">Data Analysis</span>
+                            <span class="tag">Statistical Thinking</span>
+                            <span class="tag">Data Visualization</span>
+                        </div>
+                        <div class="skill-category-label" style="margin-top: 1rem;">Programming &amp; Web</div>
+                        <div class="skill-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">HTML5 &amp; CSS3</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Git &amp; GitHub</span>
+                        </div>
+                    </div>
+
+                    <!-- Leadership & Involvement Card -->
+                    <div class="bento-card">
+                        <div class="card-glow"></div>
+                        <h3 class="card-title">Leadership &amp; Involvement</h3>
+                        <ul class="involvement-list">
+                            <li>
+                                <strong>IEEE Student Branch &bull; KDU</strong>
+                                <span>Contributed to tech initiatives, design, and logistics (Envision 4.0, Step into Industry).</span>
+                            </li>
+                            <li>
+                                <strong>Ananda College ICT Society</strong>
+                                <span>Served as Chief Organizer coordinating technology initiatives and team communications.</span>
+                            </li>
+                            <li>
+                                <strong>IEEE Young Professionals &amp; Computer Society</strong>
+                                <span>Active engagement in technical communication, volunteering, and editorial activities.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Volunteering Card -->
+                    <div class="bento-card">
+                        <div class="card-glow"></div>
+                        <h3 class="card-title">Volunteering &amp; Service</h3>
+                        <p class="card-text">
+                            <strong>Sri Lanka Life Saving Association (2019&ndash;2023)</strong><br>
+                            Gained practical lifesaving experience in public safety, rescue operations, and accident prevention at Mount Lavinia Beach and during Poson events in Anuradhapura.
+                        </p>
+                        <p class="card-text" style="color: var(--text-muted); font-size: 0.9rem;">
+                            Strengthened discipline, quick responsiveness in high-pressure situations, and collaborative teamwork.
+                        </p>
+                    </div>
+
+                    <!-- Research Interests Card -->
+                    <div class="bento-card">
+                        <div class="card-glow"></div>
+                        <h3 class="card-title">Research Interests</h3>
+                        <p class="card-text">
+                            Artificial intelligence, machine learning, data-driven business decisions, <strong>AI applications in motorsport</strong>, and intelligent systems that solve practical challenges to improve how people interact with the world.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects / Portfolio Section -->
+        <section class="section portfolio-section" id="portfolio">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">// 02 &bull; SHOWCASE</span>
+                    <h2 class="section-title">DATA, AI &amp; DEVELOPMENT</h2>
+                    <p class="section-subtitle">A selection of technical projects, intelligent systems, and creative media builds.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: AI Traffic Light Management System -->
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <div class="project-overlay">
+                                <span class="project-badge">AI &bull; Computer Vision &bull; Python</span>
+                            </div>
+                            <img src="assests/Capture.PNG" alt="AI Traffic Light Management System" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">AI-Based Traffic Light Management System</h3>
+                            <p class="project-desc">
+                                An intelligent traffic management project designed to improve signal control through adaptive decision-making. Explores YOLOv8 vehicle detection, traffic flow estimation, fuzzy-logic signal timing, deep reinforcement learning, and coordinated connected intersections.
+                            </p>
+                            <div class="project-tags">
+                                <span>Computer Vision</span>
+                                <span>YOLOv8</span>
+                                <span>Reinforcement Learning</span>
+                                <span>Python</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: SmartSpot Lanka -->
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <div class="project-overlay">
+                                <span class="project-badge">Data Science &bull; Business Analytics</span>
+                            </div>
+                            <img src="assests/undraw_Outdoor_adventure_re_j3b7.svg" alt="SmartSpot Lanka" class="project-img svg-preview">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">SmartSpot Lanka (AI Location Intelligence)</h3>
+                            <p class="project-desc">
+                                A proposed AI-powered business location recommendation system helping entrepreneurs evaluate suitable commercial locations (cafés, retail, bookshops) using geospatial clustering, competitor density, foot traffic, and profitability scoring.
+                            </p>
+                            <div class="project-tags">
+                                <span>Geospatial Analytics</span>
+                                <span>Clustering</span>
+                                <span>Location Scoring</span>
+                                <span>BI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Personal Web Portfolio & 3D CSS Experiments -->
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <div class="project-overlay">
+                                <span class="project-badge">Web &bull; 3D Mesh &bull; Front-End</span>
+                            </div>
+                            <img src="images/face.png" alt="Personal Web Portfolio" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Interactive Portfolio &amp; Web Experiments</h3>
+                            <p class="project-desc">
+                                A high-performance personal web platform featuring custom video backdrops, GPU-accelerated interactive 3D mesh physics, kinetic logo orbit transitions, and responsive Bento layouts without bloated third-party dependencies.
+                            </p>
+                            <div class="project-tags">
+                                <span>HTML5 / CSS3</span>
+                                <span>Vanilla JS</span>
+                                <span>3D Transforms</span>
+                                <span>UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Creative Design & Branding Portfolio -->
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <div class="project-overlay">
+                                <span class="project-badge">Branding &bull; Graphic Design &bull; Video</span>
+                            </div>
+                            <img src="assests/behance_cover.png" alt="Creative Portfolio" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Creative Portfolio: Digital Media &amp; Branding</h3>
+                            <p class="project-desc">
+                                Commercial design and visual storytelling projects, including the <em>Inoki's Beauty Zone</em> brand identity, social media campaign posters, and promotional event announcement videos combining functionality with aesthetic clarity.
+                            </p>
+                            <div class="project-tags">
+                                <span>Graphic Design</span>
+                                <span>Brand Identity</span>
+                                <span>Video Storytelling</span>
+                                <span>Behance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section services-section" id="services">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">// 03 &bull; CAPABILITIES</span>
+                    <h2 class="section-title">WHAT I DO</h2>
+                    <p class="section-subtitle">Combining analytical rigor with design thinking to solve complex problems.</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-number">01</div>
+                        <h3 class="service-title">Data Science &amp; Analytics</h3>
+                        <p class="service-desc">
+                            Transforming complex data into actionable business intelligence through exploratory data analysis, statistical thinking, predictive modeling, and insightful visualization.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-number">02</div>
+                        <h3 class="service-title">AI &amp; Computer Vision</h3>
+                        <p class="service-desc">
+                            Developing intelligent systems utilizing computer vision algorithms (YOLOv8), adaptive decision logic, reinforcement learning, and automated data pipelines.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-number">03</div>
+                        <h3 class="service-title">Web &amp; Interactive UI</h3>
+                        <p class="service-desc">
+                            Building clean, accessible, responsive web applications and interactive front-end experiences designed for performance, fluid motion, and intuitive ergonomics.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-number">04</div>
+                        <h3 class="service-title">Digital Media &amp; Branding</h3>
+                        <p class="service-desc">
+                            Crafting coherent visual identities, promotional video storytelling, typography hierarchies, and social media campaign assets that convey ideas clearly and boldly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact-section" id="contact">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">// 04 &bull; GET IN TOUCH</span>
+                    <h2 class="section-title">LET'S CONNECT</h2>
+                    <p class="section-subtitle">I'm always interested in connecting with people working in data science, AI, technology, and design. Let's collaborate!</p>
+                </div>
+
+                <div class="contact-wrapper">
+                    <div class="contact-cards">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-card">
+                            <div class="contact-icon-box">
+                                <img src="icons/linkedin.png" alt="LinkedIn">
+                            </div>
+                            <div class="contact-card-info">
+                                <span class="contact-label">LinkedIn</span>
+                                <span class="contact-value">Connect with me</span>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-card">
+                            <div class="contact-icon-box">
+                                <img src="icons/github.png" alt="GitHub">
+                            </div>
+                            <div class="contact-card-info">
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">View repositories</span>
+                            </div>
+                        </a>
+
+                        <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="contact-card">
+                            <div class="contact-icon-box">
+                                <img src="icons/behance.png" alt="Behance">
+                            </div>
+                            <div class="contact-card-info">
+                                <span class="contact-label">Behance</span>
+                                <span class="contact-value">Creative design work</span>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                            <div class="contact-icon-box">
+                                <img src="icons/whatsapp.png" alt="WhatsApp">
+                            </div>
+                            <div class="contact-card-info">
+                                <span class="contact-label">WhatsApp</span>
+                                <span class="contact-value">Direct Message</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Thimuth Wettasinghe. Crafted with precision &amp; code.</p>
+            <a href="#hero" class="back-to-top" aria-label="Back to top">
+                <span>Top</span> &uarr;
             </a>
         </div>
-        <div class="image">
-            <img src="images/face.png" alt="Thimuth's Face">
-        </div>
-    </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
