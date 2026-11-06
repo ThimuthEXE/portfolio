@@ -923,6 +923,41 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.project-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--primary-teal);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.project-link:hover {
+    color: #ffffff;
+    transform: translateX(2px);
+}
+
+.project-link svg {
+    transition: transform var(--transition-fast);
+}
+
+.project-link:hover svg {
+    transform: translate(2px, -2px);
+}
+
 /* --- Services Section --- */
 .services-grid {
     display: grid;
@@ -1523,6 +1558,14 @@ body {
     background: rgba(15, 30, 40, 0.04);
     border: 1px solid var(--border-subtle);
     color: var(--text-secondary);
+}
+
+[data-theme="light"] .project-link {
+    color: var(--primary-teal-text);
+}
+
+[data-theme="light"] .project-link:hover {
+    color: var(--primary-teal);
 }
 
 /* Services Grid in Light Mode */
